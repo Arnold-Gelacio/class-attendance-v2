@@ -1066,7 +1066,7 @@
         }
       }
 
-      /* Refined visual system — presentation only; behavior stays unchanged. */
+      /* Refreshed visual layer: monochrome surfaces, blue actions, red/green status. */
       :root {
         --bg: #f4f5f7;
         --surface: #ffffff;
@@ -1075,21 +1075,18 @@
         --ink-faint: #596273;
         --accent: #2563eb;
         --accent-ink: #ffffff;
-        --line: #dfe3e8;
-        --navy-deep: #111827;
         --ontime: #15803d;
         --ontime-bg: #dcfce7;
         --late: #b91c1c;
         --late-bg: #fee2e2;
         --absent: #991b1b;
         --absent-bg: #fef2f2;
+        --line: #dfe3e8;
+        --navy-deep: #111827;
         --radius: 16px;
         --shadow: 0 8px 24px rgba(17, 24, 39, 0.055), 0 1px 3px rgba(17, 24, 39, 0.045);
       }
-      html {
-        background: var(--bg);
-        scroll-behavior: smooth;
-      }
+      html { background: var(--bg); scroll-behavior: smooth; }
       body {
         color: var(--ink);
         background: var(--bg);
@@ -1099,13 +1096,11 @@
       }
       button,
       input,
-      select {
-        -webkit-tap-highlight-color: transparent;
-      }
+      select { -webkit-tap-highlight-color: transparent; }
       button:focus-visible,
       input:focus-visible,
       select:focus-visible {
-        outline: 3px solid rgba(210, 168, 76, 0.4);
+        outline: 3px solid rgba(37, 99, 235, 0.4);
         outline-offset: 2px;
       }
       .app-header {
@@ -1116,70 +1111,75 @@
         gap: 2px 24px;
         padding: 18px max(20px, calc((100% - 1040px) / 2)) 17px;
         background: var(--navy-deep);
-        box-shadow: 0 4px 18px rgba(20, 36, 63, 0.12);
+        box-shadow: 0 4px 18px rgba(17, 24, 39, 0.16);
       }
-      .app-header .eyebrow { grid-area: eyebrow; margin: 0 0 3px; }
+      .app-header .eyebrow { grid-area: eyebrow; margin: 0 0 3px; color: #93c5fd; }
+      .app-header .eyebrow .dot { background: #60a5fa; }
       .app-header h1 { grid-area: title; font-size: clamp(20px, 2.2vw, 25px); letter-spacing: -0.035em; }
       .app-header .sub { grid-area: sub; margin-top: 3px; font-size: 13px; }
       .sync-pill { grid-area: sync; justify-self: end; margin: 0; padding: 8px 12px; border-radius: 999px; }
-      .view {
-        max-width: 1040px;
-        padding: 24px 22px 32px;
-      }
+      .view { max-width: 1040px; padding: 24px 22px 32px; }
       .card {
+        border: 1px solid var(--line);
         border-radius: var(--radius);
         padding: 19px;
         margin-bottom: 16px;
         box-shadow: var(--shadow);
-        border-color: var(--line);
       }
-      .section-title {
-        color: var(--ink);
-        font-size: 12px;
-        letter-spacing: 0.075em;
-        margin-bottom: 13px;
-      }
+      .section-title { color: var(--ink); font-size: 12px; letter-spacing: 0.075em; margin-bottom: 13px; }
       .today-banner {
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: #111827;
+        color: #ffffff;
+        border: 1px solid #293242;
         border-radius: 18px;
         padding: 22px;
-        box-shadow: 0 10px 24px rgba(20, 36, 63, 0.12);
+        margin-bottom: 16px;
+        box-shadow: 0 10px 24px rgba(17, 24, 39, 0.16);
       }
+      .today-banner .eyebrow,
+      .ticket .eyebrow,
+      #access-gate .gate-eyebrow { color: #93c5fd; }
       .today-banner .big-date { font-size: 22px; letter-spacing: -0.02em; }
       .stat-grid { gap: 12px; }
       .stat-box {
+        border: 1px solid var(--line);
         border-radius: 14px;
         padding: 16px 12px;
-        box-shadow: 0 2px 8px rgba(20, 36, 63, 0.035);
+        box-shadow: 0 2px 8px rgba(17, 24, 39, 0.04);
       }
       .stat-box .num { font-size: 26px; }
       .roster-live-row { padding: 12px 3px; }
       .badge { padding: 5px 10px; }
+      .badge.ontime { background: var(--ontime-bg); color: var(--ontime); }
+      .badge.late { background: var(--late-bg); color: var(--late); }
+      .badge.absent { background: var(--absent-bg); color: var(--absent); }
       .scan-stage {
         border-radius: 20px;
-        background: #101d34;
-        box-shadow: 0 12px 28px rgba(20, 36, 63, 0.14);
+        background: #090d14;
+        box-shadow: 0 12px 28px rgba(17, 24, 39, 0.18);
       }
-      .viewfinder span { border-color: #e1bd69; }
+      .viewfinder span { border-color: #60a5fa; }
       .btn {
         min-height: 46px;
         border-radius: 12px;
         transition: transform 0.16s ease, box-shadow 0.16s ease, background-color 0.16s ease;
       }
-      .btn:hover { box-shadow: 0 5px 14px rgba(20, 36, 63, 0.12); }
+      .btn:hover { box-shadow: 0 5px 14px rgba(17, 24, 39, 0.12); }
       .btn:active { transform: translateY(1px) scale(0.99); }
-      .btn-primary { background: #1b3153; }
-      .btn-primary:hover { background: #223b62; }
-      .btn-accent { background: #e5c371; color: #3d3014; }
-      .btn-accent:hover { background: #edcf82; }
+      .btn-primary { background: #2563eb; color: #fff; }
+      .btn-primary:hover { background: #1d4ed8; }
+      .btn-accent { background: #2563eb; color: #fff; }
+      .btn-accent:hover { background: #1d4ed8; }
+      .btn-ghost { background: #f3f4f6; color: var(--ink); }
       .seg-control { padding: 4px; border-radius: 12px; }
       .seg-btn { min-height: 42px; border-radius: 9px; }
-      .seg-btn.active { box-shadow: 0 2px 7px rgba(20, 36, 63, 0.11); }
+      .seg-btn.active { box-shadow: 0 2px 7px rgba(17, 24, 39, 0.1); }
       .qr-grid { gap: 14px; }
       .qr-card {
+        border: 1px solid var(--line);
         border-radius: 14px;
         padding: 15px;
-        box-shadow: 0 2px 8px rgba(20, 36, 63, 0.035);
+        box-shadow: 0 2px 8px rgba(17, 24, 39, 0.04);
         transition: transform 0.16s ease, box-shadow 0.16s ease;
       }
       .qr-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
@@ -1190,97 +1190,54 @@
       .search-box input,
       #chat-input {
         min-height: 44px;
-        border: 1px solid #d8e0e2;
+        border: 1px solid #d1d5db;
         border-radius: 11px;
-        background: #fbfcfc;
-        transition: border-color 0.16s ease, box-shadow 0.16s ease, background-color 0.16s ease;
+        background: #ffffff;
+        transition: border-color 0.16s ease, box-shadow 0.16s ease;
       }
       .filter-row input:focus,
       .filter-row select:focus,
       .search-box input:focus,
       #chat-input:focus {
         outline: none;
-        border-color: #c9a653;
-        background: #fff;
-        box-shadow: 0 0 0 3px rgba(210, 168, 76, 0.16);
+        border-color: #2563eb;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.16);
       }
+      .setup-banner { color: #7f1d1d; }
+      .stamp.late { color: #fca5a5; }
       table.logtable th { padding: 10px 8px; }
       table.logtable td { padding: 11px 8px; }
       table.logtable tbody tr:last-child td { border-bottom: none; }
       .tabbar {
         padding: 7px 8px calc(7px + env(safe-area-inset-bottom));
-        box-shadow: 0 -5px 22px rgba(20, 36, 63, 0.08);
+        box-shadow: 0 -5px 22px rgba(17, 24, 39, 0.1);
       }
       .tab-btn { min-height: 52px; border-radius: 12px; transition: color 0.16s ease, background-color 0.16s ease; }
-      .tab-btn.active { color: #253c60; background: #f1f4f2; }
-      .tab-btn.active svg { stroke: #a47a26; }
-      #chat-fab {
-        width: 56px;
-        height: 56px;
-        background: #1b3153;
-        box-shadow: 0 7px 20px rgba(20, 36, 63, 0.25);
-        transition: transform 0.18s ease, box-shadow 0.18s ease;
-      }
-      #chat-fab:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(20, 36, 63, 0.3); }
-      #chat-panel { border-radius: 18px; box-shadow: 0 18px 48px rgba(20, 36, 63, 0.22); }
-      #access-gate .gate-card { border-radius: 20px; box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22); }
-      #access-gate button { transition: filter 0.16s ease, transform 0.16s ease; }
-      #access-gate button:hover:not(:disabled) { filter: brightness(1.06); }
-
-      /* Black-and-white foundation, blue controls, red and green statuses. */
-      button:focus-visible,
-      input:focus-visible,
-      select:focus-visible {
-        outline-color: rgba(37, 99, 235, 0.42);
-      }
-      .app-header { box-shadow: 0 4px 18px rgba(17, 24, 39, 0.16); }
-      .app-header .eyebrow,
-      .today-banner .eyebrow,
-      .ticket .eyebrow,
-      #access-gate .gate-eyebrow { color: #93c5fd; }
-      .today-banner {
-        background: #111827;
-        box-shadow: 0 10px 24px rgba(17, 24, 39, 0.18);
-      }
-      .scan-stage {
-        background: #090d14;
-        box-shadow: 0 12px 28px rgba(17, 24, 39, 0.18);
-      }
-      .viewfinder span { border-color: #60a5fa; }
-      .btn-primary { background: #2563eb; }
-      .btn-primary:hover { background: #1d4ed8; }
-      .btn-accent { background: #2563eb; color: #ffffff; }
-      .btn-accent:hover { background: #1d4ed8; }
-      .btn-ghost { background: #f3f4f6; }
-      .seg-btn.active { box-shadow: 0 2px 7px rgba(17, 24, 39, 0.1); }
-      .card,
-      .stat-box,
-      .qr-card { box-shadow: var(--shadow); }
-      .setup-banner { color: #7f1d1d; }
-      .filter-row input:focus,
-      .filter-row select:focus,
-      .search-box input:focus,
-      #chat-input:focus {
-        border-color: #2563eb;
-        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.16);
-      }
-      .tabbar { box-shadow: 0 -5px 22px rgba(17, 24, 39, 0.1); }
       .tab-btn.active { color: #1d4ed8; background: #eff6ff; }
       .tab-btn.active svg { stroke: #2563eb; }
       #chat-fab {
+        width: 56px;
+        height: 56px;
         background: #2563eb;
         box-shadow: 0 7px 20px rgba(17, 24, 39, 0.24);
+        transition: transform 0.18s ease, box-shadow 0.18s ease;
       }
-      #chat-fab:hover { box-shadow: 0 10px 24px rgba(17, 24, 39, 0.3); }
-      #chat-panel { box-shadow: 0 18px 48px rgba(17, 24, 39, 0.22); }
-      #access-gate .gate-card { background: #111827; }
+      #chat-fab:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(17, 24, 39, 0.3); }
+      #chat-panel { border-radius: 18px; box-shadow: 0 18px 48px rgba(17, 24, 39, 0.22); }
+      #access-gate .gate-card {
+        max-width: 380px;
+        background: #111827;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 20px;
+        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.24);
+      }
       #access-gate button {
         background: #2563eb;
         color: #ffffff;
-        box-shadow: 0 6px 16px rgba(17, 24, 39, 0.22);
+        border-radius: 11px;
+        transition: filter 0.16s ease, transform 0.16s ease;
       }
-      .stamp.late { color: #fca5a5; }
-      .stamp.error { color: #f87171; }
+      #access-gate button:hover:not(:disabled) { filter: brightness(1.08); }
 
       @media (min-width: 760px) {
         body { padding-bottom: 96px; }
@@ -1297,10 +1254,7 @@
           max-height: 58vh;
           margin: 0;
         }
-        #view-scan .scan-controls {
-          grid-column: 1;
-          grid-row: 2;
-        }
+        #view-scan .scan-controls { grid-column: 1; grid-row: 2; }
         #view-scan > .card {
           grid-column: 2;
           grid-row: 1 / span 2;
@@ -1314,10 +1268,10 @@
           bottom: 16px;
           width: min(520px, calc(100% - 32px));
           padding: 7px 9px;
-          border: 1px solid rgba(225, 231, 232, 0.9);
+          border: 1px solid rgba(223, 227, 232, 0.95);
           border-radius: 18px;
           transform: translateX(-50%);
-          box-shadow: 0 10px 34px rgba(20, 36, 63, 0.16);
+          box-shadow: 0 10px 34px rgba(17, 24, 39, 0.16);
         }
         .tab-btn { flex-direction: row; justify-content: center; gap: 8px; padding: 9px 14px; font-size: 12px; }
         .tab-btn svg { width: 19px; height: 19px; }
@@ -1360,6 +1314,12 @@
           animation-iteration-count: 1 !important;
           transition-duration: 0.01ms !important;
         }
+      }
+      @media print {
+        .view { max-width: none !important; padding: 0 !important; }
+        .card { box-shadow: none !important; }
+        .qr-grid { grid-template-columns: repeat(3, 1fr); }
+        .qr-card { border: 1px dashed #999; }
       }
     </style>
   </head>
@@ -1677,12 +1637,12 @@
           label: "CSS · 181-A",
           subject: "Computer Systems Servicing",
           schedule: [
-            { day: 1, start: "08:00", end: "24:00" },
-            { day: 2, start: "08:00", end: "24:00" },
-            { day: 3, start: "08:00", end: "24:00" },
-            { day: 4, start: "11:00", end: "24:00" },
-            { day: 5, start: "08:00", end: "24:00" },
-            { day: 6, start: "12:00", end: "24:00" },
+            { day: 1, start: "00:00", end: "24:00" },
+            { day: 2, start: "07:00", end: "24:00" },
+            { day: 3, start: "00:00", end: "24:00" },
+            { day: 4, start: "07:00", end: "24:00" },
+            { day: 5, start: "00:00", end: "24:00" },
+            { day: 6, start: "13:00", end: "24:00" },
           ],
         },
         PROG: {
@@ -1690,12 +1650,12 @@
           label: "Programming · 182-A",
           subject: "Programming",
           schedule: [
-            { day: 1, start: "08:00", end: "24:00" },
-            { day: 2, start: "12:00", end: "24:00" },
-            { day: 3, start: "08:00", end: "24:00" },
-            { day: 4, start: "11:00", end: "24:00" },
-            { day: 5, start: "08:00", end: "24:00" },
-            { day: 6, start: "12:00", end: "24:00" },
+            { day: 1, start: "00:00", end: "24:00" },
+            { day: 2, start: "11:00", end: "24:00" },
+            { day: 3, start: "00:00", end: "24:00" },
+            { day: 4, start: "07:00", end: "24:00" },
+            { day: 5, start: "00:00", end: "24:00" },
+            { day: 6, start: "13:00", end: "24:00" },
           ],
         },
       };
@@ -2291,7 +2251,7 @@
 
         const pillRow = document.getElementById("dash-sessions");
         pillRow.innerHTML = "";
-        let liveSection = null;
+        const liveSections = [];
         Object.values(SECTIONS).forEach((sec) => {
           const sess = sessionForDate(sec.code, now);
           const pill = document.createElement("div");
@@ -2300,7 +2260,7 @@
             pill.innerHTML = `<span class="lbl">${sec.label}</span> — no class today`;
           } else {
             const isLive = now >= sess.start && now <= sess.end;
-            if (isLive) liveSection = sec.code;
+            if (isLive) liveSections.push(sec.code);
             pill.className = "session-pill" + (isLive ? " live" : "");
             pill.innerHTML = `<span class="lbl">${sec.label}</span> — ${formatHM(sess.startLabel)}–${formatHM(sess.endLabel)}${isLive ? " · live now" : ""}`;
           }
@@ -2308,7 +2268,7 @@
         });
 
         const liveWrap = document.getElementById("dash-live-section");
-        if (!liveSection) {
+        if (!liveSections.length) {
           liveWrap.innerHTML = `<div class="card empty-note">No class is running right now. Check back at the next scheduled session.</div>`;
           return;
         }
@@ -2320,33 +2280,40 @@
           allScans = [];
         }
         const dk = dateKey(now);
-        const todays = allScans.filter(
-          (r) => r.date === dk && r.section === liveSection,
-        );
-        const roster = STUDENTS.filter((s) => s.section === liveSection);
-        const onTime = todays.filter((r) => r.status === "On Time").length;
-        const late = todays.filter((r) => r.status === "Late").length;
-        const scannedIds = new Set(todays.map((r) => r.studentId));
-        const notYet = roster.filter((s) => !scannedIds.has(s.id));
+        let totalOnTime = 0,
+          totalLate = 0,
+          totalNotYet = 0;
+        let cards = "";
 
-        let html = `<div class="stat-grid">
-    <div class="stat-box ontime"><div class="num">${onTime}</div><div class="lbl">On time</div></div>
-    <div class="stat-box late"><div class="num">${late}</div><div class="lbl">Late</div></div>
-    <div class="stat-box absent"><div class="num">${notYet.length}</div><div class="lbl">Not yet in</div></div>
-  </div>
-  <div class="card"><div class="section-title">${SECTIONS[liveSection].label} — live roster</div>`;
+        liveSections.forEach((code) => {
+          const todays = allScans.filter(
+            (r) => r.date === dk && r.section === code,
+          );
+          const roster = STUDENTS.filter((s) => s.section === code);
+          const scannedIds = new Set(todays.map((r) => r.studentId));
+          totalOnTime += todays.filter((r) => r.status === "On Time").length;
+          totalLate += todays.filter((r) => r.status === "Late").length;
+          totalNotYet += roster.filter((s) => !scannedIds.has(s.id)).length;
 
-        roster.forEach((s) => {
-          const rec = todays.find((r) => r.studentId === s.id);
-          let badge = '<span class="badge waiting">Waiting</span>';
-          if (rec)
-            badge =
-              rec.status === "On Time"
-                ? '<span class="badge ontime">On time</span>'
-                : '<span class="badge late">Late</span>';
-          html += `<div class="roster-live-row"><span>${s.name}</span>${badge}</div>`;
+          cards += `<div class="card"><div class="section-title">${SECTIONS[code].label} — live roster</div>`;
+          roster.forEach((s) => {
+            const rec = todays.find((r) => r.studentId === s.id);
+            let badge = '<span class="badge waiting">Waiting</span>';
+            if (rec)
+              badge =
+                rec.status === "On Time"
+                  ? '<span class="badge ontime">On time</span>'
+                  : '<span class="badge late">Late</span>';
+            cards += `<div class="roster-live-row"><span>${s.name}</span>${badge}</div>`;
+          });
+          cards += `</div>`;
         });
-        html += `</div>`;
+
+        const html = `<div class="stat-grid">
+    <div class="stat-box ontime"><div class="num">${totalOnTime}</div><div class="lbl">On time</div></div>
+    <div class="stat-box late"><div class="num">${totalLate}</div><div class="lbl">Late</div></div>
+    <div class="stat-box absent"><div class="num">${totalNotYet}</div><div class="lbl">Not yet in</div></div>
+  </div>${cards}`;
         liveWrap.innerHTML = html;
       }
       function formatHM(hhmm) {
