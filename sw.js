@@ -1,5 +1,5 @@
 // Bump this when you change any cached file so clients pick up the update.
-const CACHE_NAME = 'attendance-cache-v5';
+const CACHE_NAME = 'attendance-cache-v7';
 
 // Everything the app needs to run with zero internet.
 // The CDN scripts below are fetched fresh on install (while online) and
